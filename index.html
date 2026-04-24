@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Meryem & Murat – Mariage · 31 Octobre 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500&family=Great+Vibes&family=Italiana&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Dancing+Script:wght@600;700&family=Italiana&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -21,6 +21,9 @@
   --text:     #3E2C18;
   --text-md:  #6B5030;
   --rose:     #B87870;
+
+  /* Cursive font variable — swap here if needed */
+  --script: 'Dancing Script', cursive;
 }
 
 html, body { height: 100%; }
@@ -29,6 +32,8 @@ body {
   background: #FBF7EC;
   color: var(--text);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ═══════════════════════════
@@ -70,7 +75,7 @@ body {
 
 .env-bism {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.3rem, 5.5vw, 1.8rem);
+  font-size: clamp(1.25rem, 5.5vw, 1.8rem);
   font-weight: 300;
   color: var(--gold-dk); opacity: .9;
   margin-bottom: .5rem;
@@ -79,7 +84,7 @@ body {
 
 .env-fam {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: clamp(.48rem, 1.9vw, .6rem);
+  font-size: clamp(.5rem, 2vw, .62rem);
   font-weight: 200;
   letter-spacing: .22em; text-transform: uppercase;
   color: var(--text-md); line-height: 2.4;
@@ -94,21 +99,25 @@ body {
 }
 
 .env-names {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(2.8rem, 14vw, 4.8rem);
-  line-height: 1.1; color: var(--gold-dk);
+  font-family: var(--script);
+  font-weight: 700;
+  font-size: clamp(3rem, 15vw, 5.2rem);
+  line-height: 1.15; color: var(--gold-dk);
   animation: up 1s ease .45s both, glow 3.5s ease-in-out 1.5s infinite;
 }
 .env-amp {
   display: block;
-  font-size: clamp(.9rem, 3.8vw, 1.3rem);
-  color: var(--rose); letter-spacing: .15em; margin: -.05rem 0;
+  font-family: var(--script);
+  font-weight: 600;
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  color: var(--rose); letter-spacing: .05em; margin: -.1rem 0;
 }
 @keyframes glow {
-  0%,100% { filter: drop-shadow(0 3px 10px rgba(122,92,40,.12)); }
-  50%      { filter: drop-shadow(0 3px 24px rgba(122,92,40,.36)); }
+  0%,100% { filter: drop-shadow(0 2px 8px rgba(122,92,40,.1)); }
+  50%      { filter: drop-shadow(0 2px 22px rgba(122,92,40,.32)); }
 }
 
+/* envelope */
 .env-stage {
   position: relative;
   width: min(290px, 80vw);
@@ -141,7 +150,7 @@ body {
   background:radial-gradient(circle at 38% 38%,#C8A055,#7A5C28);
   border-radius:50%;
   display:flex;align-items:center;justify-content:center;
-  font-family:'Great Vibes',cursive;font-size:.95rem;color:#FFFCF0;
+  font-family:var(--script);font-weight:700;font-size:.9rem;color:#FFFCF0;
   box-shadow:0 3px 14px rgba(122,92,40,.45);z-index:20;
   transition:transform .4s ease,opacity .4s ease;
 }
@@ -156,7 +165,7 @@ body {
   border-top:2px solid rgba(184,145,74,.3);
 }
 .env-card.rise { transform:translateY(-95%);opacity:1; }
-.env-cname { font-family:'Great Vibes',cursive;font-size:clamp(1.1rem,4.8vw,1.6rem);color:var(--gold-dk); }
+.env-cname { font-family:var(--script);font-weight:700;font-size:clamp(1.1rem,4.8vw,1.6rem);color:var(--gold-dk); }
 .env-csub  { font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:.8rem;color:var(--text-md); }
 
 .open-btn {
@@ -198,8 +207,13 @@ body {
 .hero-bism  { font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.8rem,8vw,2.5rem);color:var(--gold-dk);margin-bottom:.8rem;opacity:0;animation:up 1s ease .2s both; }
 .hero-fam   { font-family:'Josefin Sans',sans-serif;font-weight:200;font-size:clamp(.5rem,2.1vw,.65rem);letter-spacing:.22em;text-transform:uppercase;color:var(--text-md);line-height:2.6;opacity:0;animation:up 1s ease .45s both; }
 .hero-rule  { width:55px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:1.2rem auto;opacity:0;animation:fade 1s ease .7s both; }
-.hero-names { font-family:'Great Vibes',cursive;font-size:clamp(4.5rem,24vw,7.5rem);line-height:1.1;color:var(--gold-dk);opacity:0;animation:up 1.2s ease .9s both; }
-.hero-amp   { display:block;font-size:clamp(1.3rem,6vw,2rem);color:var(--rose);letter-spacing:.15em; }
+.hero-names {
+  font-family:var(--script);font-weight:700;
+  font-size:clamp(4rem,22vw,7rem);
+  line-height:1.15;color:var(--gold-dk);
+  opacity:0;animation:up 1.2s ease .9s both;
+}
+.hero-amp { display:block;font-family:var(--script);font-weight:600;font-size:clamp(1.2rem,5.5vw,1.8rem);color:var(--rose);letter-spacing:.05em; }
 .hero-badge { margin-top:2.2rem;background:rgba(255,255,255,.7);border:1px solid rgba(184,145,74,.3);padding:1rem 2.4rem;display:inline-block;position:relative;backdrop-filter:blur(4px);opacity:0;animation:up 1s ease 1.4s both; }
 .hero-badge::before { content:'';position:absolute;top:5px;left:5px;right:5px;bottom:5px;border:1px solid rgba(184,145,74,.18); }
 .hero-badge-top  { font-family:'Josefin Sans',sans-serif;font-weight:200;font-size:.48rem;letter-spacing:.55em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;display:block; }
@@ -218,14 +232,22 @@ body {
 .orn{text-align:center;color:var(--gold);font-size:.9rem;letter-spacing:.7rem;margin-bottom:.3rem;}
 .p-tag{font-family:'Josefin Sans',sans-serif;font-weight:200;font-size:.5rem;letter-spacing:.6em;text-transform:uppercase;color:var(--gold-dk);text-align:center;margin-bottom:1.1rem;}
 .p-bism{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.5rem,6.5vw,2rem);color:var(--gold-dk);text-align:center;opacity:.85;margin-bottom:.8rem;}
-.p-names{font-family:'Great Vibes',cursive;font-size:clamp(3rem,15vw,5rem);color:var(--gold-dk);text-align:center;line-height:1.15;margin:.4rem 0 1rem;}
+.p-names{
+  font-family:var(--script);font-weight:700;
+  font-size:clamp(2.5rem,13vw,4.5rem);
+  color:var(--gold-dk);text-align:center;line-height:1.2;margin:.4rem 0 1rem;
+}
 .rule{display:flex;align-items:center;gap:.7rem;margin:1rem 0;}
 .rule::before,.rule::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(184,145,74,.4));}
 .rule::after{background:linear-gradient(90deg,rgba(184,145,74,.4),transparent);}
 .rule span{color:var(--gold);font-size:.75rem;}
 .p-body{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.1rem,4vw,1.3rem);line-height:2.1;color:var(--text);text-align:center;}
 .p-body em{font-style:italic;color:var(--gold-dk);font-weight:500;}
-.p-sig{font-family:'Great Vibes',cursive;font-size:clamp(2.2rem,10vw,3.2rem);color:var(--gold-dk);text-align:center;margin-top:1.5rem;}
+.p-sig{
+  font-family:var(--script);font-weight:700;
+  font-size:clamp(2rem,10vw,3rem);
+  color:var(--gold-dk);text-align:center;margin-top:1.5rem;
+}
 
 /* ── DATE ── */
 .date-sec{background:var(--beige);padding:4.5rem 1.5rem;text-align:center;position:relative;overflow:hidden;}
@@ -246,7 +268,7 @@ body {
 .venue-card{max-width:460px;margin:0 auto;border:1px solid rgba(184,145,74,.22);overflow:hidden;background:var(--ivory);box-shadow:0 10px 50px rgba(122,92,40,.1);}
 .venue-head{padding:2.2rem 1.5rem;text-align:center;background:linear-gradient(180deg,var(--beige),var(--ivory));border-bottom:1px solid rgba(184,145,74,.18);}
 .venue-vtag{font-family:'Josefin Sans',sans-serif;font-weight:200;font-size:.48rem;letter-spacing:.58em;text-transform:uppercase;color:var(--gold);opacity:.75;margin-bottom:.8rem;display:block;}
-.venue-nm{font-family:'Great Vibes',cursive;font-size:clamp(2.3rem,11vw,3.8rem);color:var(--gold-dk);margin-bottom:.5rem;}
+.venue-nm{font-family:var(--script);font-weight:700;font-size:clamp(2rem,10vw,3.4rem);color:var(--gold-dk);margin-bottom:.5rem;}
 .venue-addr{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(.95rem,3.5vw,1.1rem);color:var(--text-md);}
 .map-box{position:relative;width:100%;height:290px;}
 .map-box iframe{width:100%;height:100%;border:none;display:block;}
@@ -259,7 +281,7 @@ body {
 .msg-sec{background:var(--beige);padding:4.5rem 1.2rem;}
 .msg-paper{max-width:460px;margin:0 auto;background:var(--ivory);border:1px solid rgba(184,145,74,.22);padding:clamp(2.2rem,7vw,3.5rem) clamp(1.8rem,6vw,3rem);position:relative;box-shadow:0 10px 50px rgba(122,92,40,.1);}
 .msg-paper::before{content:'';position:absolute;top:9px;left:9px;right:9px;bottom:9px;border:1px solid rgba(184,145,74,.15);pointer-events:none;}
-.msg-ttl{font-family:'Great Vibes',cursive;font-size:clamp(2.2rem,11vw,3.4rem);color:var(--gold-dk);text-align:center;margin-bottom:.3rem;}
+.msg-ttl{font-family:var(--script);font-weight:700;font-size:clamp(2rem,10vw,3.2rem);color:var(--gold-dk);text-align:center;margin-bottom:.3rem;}
 .msg-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(.95rem,3.8vw,1.1rem);color:var(--text-md);text-align:center;margin-bottom:2rem;opacity:.8;}
 .fg{margin-bottom:1.5rem;}
 .fg-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.5rem;}
@@ -275,20 +297,17 @@ body {
 .send-btn:hover .btn-inner{color:#FFFDF6;}
 .send-btn:disabled{opacity:.5;cursor:not-allowed;}
 
-/* sending state */
 .sending-msg{display:none;text-align:center;padding:.5rem 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--text-md);opacity:.7;}
-
 #success{display:none;text-align:center;padding:1rem 0;}
 .succ-icon{font-size:2.8rem;margin-bottom:.6rem;color:var(--gold);}
 .succ-txt{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(1.05rem,4vw,1.2rem);color:var(--text);line-height:2;}
-.succ-sig{font-family:'Great Vibes',cursive;font-size:clamp(1.8rem,9vw,2.8rem);color:var(--gold-dk);display:block;margin-top:.8rem;}
-
+.succ-sig{font-family:var(--script);font-weight:700;font-size:clamp(1.8rem,9vw,2.8rem);color:var(--gold-dk);display:block;margin-top:.8rem;}
 #form-error{display:none;text-align:center;margin-top:.8rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--rose);}
 
 /* ── FOOTER ── */
 footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1.5rem 3rem;text-align:center;position:relative;overflow:hidden;}
 .ft-floral{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-end;pointer-events:none;opacity:.3;}
-.ft-names{font-family:'Great Vibes',cursive;font-size:clamp(3rem,15vw,5rem);color:var(--gold-dk);margin-bottom:.6rem;}
+.ft-names{font-family:var(--script);font-weight:700;font-size:clamp(2.8rem,14vw,5rem);color:var(--gold-dk);margin-bottom:.6rem;}
 .ft-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:clamp(.95rem,3.5vw,1.1rem);color:var(--text-md);max-width:300px;margin:0 auto;line-height:2;opacity:.82;}
 .ft-hearts{margin:1.2rem 0;color:var(--rose);font-size:.95rem;letter-spacing:.55rem;opacity:.65;}
 .ft-meta{font-family:'Josefin Sans',sans-serif;font-weight:200;font-size:.48rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold-dk);opacity:.45;margin-top:1.8rem;}
@@ -444,12 +463,11 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
         <div class="map-shade"></div>
       </div>
       <div class="venue-foot">
-        <a href="https://maps.google.com/?q=45+Rue+Saint-Andre+Bobigny+93000+France" target="_blank" class="itin-btn">↗ &nbsp;Obtenir l'itinéraire</a>
+        <a href="https://maps.google.com/?q=45+Rue+Saint-Andre+Bobigny+93000+France" target="_blank" class="itin-btn"> &nbsp;Obtenir l'itinéraire</a>
       </div>
     </div>
   </section>
 
-  <!-- MESSAGE FORM with Formspree -->
   <section class="msg-sec">
     <div class="msg-paper rev">
       <div class="corner tl"></div><div class="corner tr"></div>
@@ -504,10 +522,10 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
     </div>
   </footer>
 
-</div><!-- /main -->
+</div>
 
 <script>
-/* ── Petals ── */
+/* petals */
 (function(){
   var c=document.getElementById('env-petals');
   var syms=['✿','❀','✾','·','◦','❁'];
@@ -525,18 +543,15 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
   }
 })();
 
-/* ── Open envelope ── */
+/* open envelope */
 document.getElementById('open-btn').addEventListener('click',function(){
   var env=document.getElementById('env-scene');
   var main=document.getElementById('main');
   var btn=document.getElementById('open-btn');
   btn.disabled=true;
-
   document.getElementById('env-flap').classList.add('open');
   document.getElementById('env-seal').classList.add('hide');
-
-  setTimeout(function(){ document.getElementById('env-card').classList.add('rise'); }, 1200);
-
+  setTimeout(function(){ document.getElementById('env-card').classList.add('rise'); },1200);
   setTimeout(function(){
     env.classList.add('out');
     setTimeout(function(){
@@ -552,7 +567,7 @@ document.getElementById('open-btn').addEventListener('click',function(){
   },3000);
 });
 
-/* ── Countdown ── */
+/* countdown */
 function tick(){
   var target=new Date('2026-10-31T18:00:00');
   var diff=target-new Date();
@@ -565,59 +580,49 @@ function tick(){
 }
 tick(); setInterval(tick,1000);
 
-/* ── Scroll reveal ── */
+/* scroll reveal */
 var obs=new IntersectionObserver(function(entries){
   entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
 },{threshold:0.1});
 document.querySelectorAll('.rev').forEach(function(el){obs.observe(el);});
 
-/* ── Formspree submit ── */
-document.getElementById('send-btn').addEventListener('click', function(){
-  var prenom = document.getElementById('fp').value.trim();
-  var nom    = document.getElementById('fn').value.trim();
-  var msg    = document.getElementById('fm').value.trim();
-  var errEl  = document.getElementById('form-error');
-  var sendEl = document.getElementById('sending-msg');
-  var btn    = document.getElementById('send-btn');
-
-  errEl.style.display = 'none';
-
+/* Formspree submit */
+document.getElementById('send-btn').addEventListener('click',function(){
+  var prenom=document.getElementById('fp').value.trim();
+  var nom=document.getElementById('fn').value.trim();
+  var msg=document.getElementById('fm').value.trim();
+  var errEl=document.getElementById('form-error');
+  var sendEl=document.getElementById('sending-msg');
+  var btn=document.getElementById('send-btn');
+  errEl.style.display='none';
   if(!prenom){
     var el=document.getElementById('fp');
-    el.style.borderBottomColor='#C4847A'; el.focus();
+    el.style.borderBottomColor='#C4847A';el.focus();
     setTimeout(function(){el.style.borderBottomColor='';},2200);
     return;
   }
-
-  // Show loading state
-  btn.disabled = true;
-  sendEl.style.display = 'block';
-
-  var data = new FormData();
-  data.append('prenom', prenom);
-  data.append('nom', nom);
-  data.append('message', msg);
-
-  fetch('https://formspree.io/f/mzdyovpl', {
-    method: 'POST',
-    body: data,
-    headers: { 'Accept': 'application/json' }
+  btn.disabled=true;
+  sendEl.style.display='block';
+  var data=new FormData();
+  data.append('prenom',prenom);
+  data.append('nom',nom);
+  data.append('message',msg);
+  fetch('https://formspree.io/f/mzdyovpl',{
+    method:'POST',body:data,headers:{'Accept':'application/json'}
   })
   .then(function(res){
-    sendEl.style.display = 'none';
+    sendEl.style.display='none';
     if(res.ok){
       document.getElementById('msg-form').style.display='none';
       document.getElementById('success').style.display='block';
       document.getElementById('sname').textContent='Merci, '+prenom+'\u00a0!';
     } else {
-      btn.disabled = false;
-      errEl.style.display = 'block';
+      btn.disabled=false; errEl.style.display='block';
     }
   })
   .catch(function(){
-    sendEl.style.display = 'none';
-    btn.disabled = false;
-    errEl.style.display = 'block';
+    sendEl.style.display='none';
+    btn.disabled=false; errEl.style.display='block';
   });
 });
 </script>
