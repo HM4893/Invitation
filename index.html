@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Meryem & Murat – Mariage · 31 Octobre 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Dancing+Script:wght@600;700&family=Italiana&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Dancing+Script:wght@600;700&family=Italiana&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -42,18 +42,14 @@ body {
 #env-scene {
   position: fixed; inset: 0; z-index: 8000;
   background: linear-gradient(165deg, #FBF7EC 0%, #F0E3C0 60%, #E4D098 100%);
-  overflow-y: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   display: flex; flex-direction: column;
   align-items: center;
   padding: 2rem 1.5rem 3rem;
-  transition: opacity 0.9s ease, transform 0.9s ease;
+  transition: opacity 1s ease;
 }
-#env-scene.out { 
-  opacity: 0; 
-  transform: scale(1.05);
-  pointer-events: none; 
-}
+#env-scene.out { opacity: 0; pointer-events: none; }
 
 #env-petals { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
 .petal { position: absolute; opacity: 0; animation: fall linear infinite; }
@@ -64,243 +60,74 @@ body {
   100% { transform: translateY(110vh) rotate(600deg); opacity: 0; }
 }
 
-.env-corners {
-  position: fixed; top: 0; left: 0; right: 0;
-  display: flex; justify-content: space-between;
-  pointer-events: none; z-index: 1;
-}
+.env-corners { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; pointer-events: none; z-index: 1; }
+.env-inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 480px; text-align: center; }
 
-.env-inner {
-  position: relative; z-index: 2;
-  display: flex; flex-direction: column;
-  align-items: center; width: 100%; max-width: 480px;
-  text-align: center;
-  transition: opacity .5s ease;
-}
+.fade-target { transition: opacity 0.5s ease; }
+.fade-out { opacity: 0 !important; pointer-events: none; }
 
-.env-bism {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.25rem, 5.5vw, 1.8rem);
-  font-weight: 400;
-  color: var(--gold-dk); 
-  margin-bottom: .5rem;
-  animation: up .9s ease .05s both;
-}
+.env-bism { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.25rem, 5.5vw, 1.8rem); font-weight: 400; color: var(--gold-dk); margin-bottom: .5rem; animation: up .9s ease .05s both; }
+.env-fam { font-family: 'Josefin Sans', sans-serif; font-size: clamp(.6rem, 2.2vw, .7rem); font-weight: 300; letter-spacing: .2em; text-indent: .2em; text-transform: uppercase; color: var(--text-md); line-height: 2.2; animation: up .9s ease .2s both; }
+.env-rule { width: 50px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: .85rem auto; animation: fade .9s ease .35s both; }
 
-.env-fam {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: clamp(.6rem, 2.2vw, .7rem);
-  font-weight: 300;
-  letter-spacing: .2em; 
-  text-indent: .2em; 
-  text-transform: uppercase;
-  color: var(--text-md); 
-  line-height: 2.2;
-  animation: up .9s ease .2s both;
-}
+.env-names { display: flex; flex-direction: column; align-items: center; font-family: var(--script); font-weight: 700; font-size: clamp(3.2rem, 15vw, 5.5rem); line-height: 1.1; color: var(--gold-dk); animation: up 1s ease .45s both, glow 3.5s ease-in-out 1.5s infinite; }
+.env-amp { display: block; font-family: var(--script); font-weight: 600; font-size: clamp(1rem, 4vw, 1.4rem); color: var(--rose); letter-spacing: .05em; text-indent: .05em; margin: 0.8rem 0 0.1rem 0; }
 
-.env-rule {
-  width: 50px; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin: .85rem auto;
-  animation: fade .9s ease .35s both;
-}
+@keyframes glow { 0%,100% { filter: drop-shadow(0 2px 8px rgba(122,92,40,.1)); } 50% { filter: drop-shadow(0 2px 22px rgba(122,92,40,.32)); } }
 
-.env-names {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: var(--script);
-  font-weight: 700;
-  font-size: clamp(3.2rem, 15vw, 5.5rem);
-  line-height: 1.1; 
-  color: var(--gold-dk);
-  animation: up 1s ease .45s both, glow 3.5s ease-in-out 1.5s infinite;
-}
+.env-stage { position: relative; width: min(290px, 80vw); height: min(195px, 52vw); perspective: 1300px; margin-top: 2.4rem; animation: up 1s ease .6s both; }
+.env-back { position: absolute; inset: 0; background: linear-gradient(155deg, #D4C085 0%, #C4A860 100%); border-radius: 3px; box-shadow: 0 18px 55px rgba(122,92,40,.22), 0 4px 12px rgba(0,0,0,.07); z-index: 1; transition: opacity 0.5s ease; }
 
-.env-amp {
-  display: block;
-  font-family: var(--script);
-  font-weight: 600;
-  font-size: clamp(1rem, 4vw, 1.4rem);
-  color: var(--rose); 
-  letter-spacing: .05em; text-indent: .05em; 
-  margin: 0.8rem 0 0.1rem 0; 
-}
-@keyframes glow {
-  0%,100% { filter: drop-shadow(0 2px 8px rgba(122,92,40,.1)); }
-  50%      { filter: drop-shadow(0 2px 22px rgba(122,92,40,.32)); }
-}
-
-/* ═══════════════════════════
-   PHYSIQUE DE L'ENVELOPPE — CORRIGÉE
-   (la carte ne dépasse plus dans le texte au-dessus)
-═══════════════════════════ */
-.env-stage {
-  position: relative;
-  width: min(290px, 80vw);
-  height: min(195px, 52vw);
-  perspective: 1000px;
-  margin-top: 2.4rem; /* un peu plus d'air avec les noms au-dessus */
-  animation: up 1s ease .6s both;
-}
-
-/* Le dos de l'enveloppe (l'intérieur de la pochette) */
-.env-back {
-  position: absolute; inset: 0;
-  background: linear-gradient(155deg, #D4C085 0%, #C4A860 100%);
-  border-radius: 3px;
-  box-shadow: 0 18px 55px rgba(122,92,40,.22), 0 4px 12px rgba(0,0,0,.07);
-  z-index: 1;
-  transition: opacity .5s ease;
-}
-
-/* La carte, glissée EN SANDWICH entre le dos et l'avant.
-   Hauteur et décalage recalculés pour qu'elle reste toujours
-   à l'intérieur de la scène, même une fois "sortie". */
-.env-card {
-  position:absolute;bottom:8%;left:7%;right:7%;height:66%;
-  background:linear-gradient(180deg,#FFFEF8,#FAF5E8);
-  border-radius:2px;
-  box-shadow: 0 -4px 15px rgba(0,0,0,.05);
-  transform:translateY(4px);opacity:0;
-  transition:transform 1.2s cubic-bezier(.15,.85,.25,1),opacity .6s ease;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;
-  border-top:2px solid rgba(184,145,74,.3);
-  z-index: 2; /* Derrière la pochette avant */
-  transform-origin: center center;
-}
-/* La carte remonte juste assez pour dépasser la pochette avant,
-   sans jamais sortir de la scène ni chevaucher le texte au-dessus */
-.env-card.rise { transform:translateY(-30%); opacity:1; }
-
-/* La carte "zoome" hors de l'enveloppe pour révéler le contenu principal */
-.env-card.zoom {
-  transition: transform 1.3s cubic-bezier(.6,0,.2,1), opacity 1s ease .55s;
-  transform: translateY(-30%) scale(22);
-  opacity: 0;
-  z-index: 50;
-  box-shadow: none;
-}
+.env-card { position:absolute;bottom:8%;left:7%;right:7%;height:66%; background:linear-gradient(180deg,#FFFEF8,#FAF5E8); border-radius:2px; box-shadow: 0 -4px 15px rgba(0,0,0,.05); transform:translateY(4px) rotateX(10deg); opacity:0; transition:transform 1.2s cubic-bezier(.15,.85,.25,1),opacity .6s ease; display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem; border-top:2px solid rgba(184,145,74,.3); z-index: 2; transform-origin: center center; will-change: transform; }
+.env-card.rise { transform: translateY(-120%) rotateX(0deg); opacity: 1; z-index: 10; }
+.env-card.zoom { transform: translateY(-120%) scale(35) rotateX(0deg); opacity: 1; box-shadow: none; transition: transform 1.2s cubic-bezier(.4, 0, .2, 1); }
 
 .env-cname { font-family:var(--script);font-weight:700;font-size:clamp(1.1rem,4.8vw,1.6rem);color:var(--gold-dk); }
 .env-csub  { font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:.8rem;color:var(--text-md); }
 
-/* La pochette avant avec une vraie encoche en V au milieu */
-.env-front {
-  position: absolute; inset: 0;
-  background: linear-gradient(155deg, #FFFCF0 0%, #F5E8C0 55%, #E8D4A0 100%);
-  border-radius: 3px;
-  clip-path: polygon(0 0, 50% 53%, 100% 0, 100% 100%, 0 100%); /* Le fameux V */
-  z-index: 3; /* Couvre la carte */
-  transition: opacity .5s ease;
-}
-/* Ombres visuelles pour simuler les plis sur la pochette avant */
+.env-front { position: absolute; inset: 0; background: linear-gradient(155deg, #FFFCF0 0%, #F5E8C0 55%, #E8D4A0 100%); border-radius: 3px; clip-path: polygon(0 0, 50% 53%, 100% 0, 100% 100%, 0 100%); z-index: 3; transition: opacity 0.5s ease; }
 .env-v  { position:absolute;bottom:0;left:0;right:0;height:52%;background:linear-gradient(170deg,#E8D4A0,#C8A860);clip-path:polygon(0 100%,50% 0%,100% 100%);opacity:.3; }
 .env-wl { position:absolute;top:0;left:0;width:52%;height:100%;background:linear-gradient(90deg,#DBCA90,#EEE0B8);clip-path:polygon(0 0,100% 50%,0 100%);opacity:.45; }
 .env-wr { position:absolute;top:0;right:0;width:52%;height:100%;background:linear-gradient(270deg,#D2BC84,#E8D8A8);clip-path:polygon(100% 0,0 50%,100% 100%);opacity:.45; }
 
-/* Le rabat supérieur */
-.env-flap {
-  position:absolute;top:0;left:0;right:0;height:52%;
-  background:linear-gradient(170deg,#F8EDD8,#DECA90);
-  clip-path:polygon(0 0,100% 0,50% 100%);
-  transform-origin:top center;transform:rotateX(0deg);
-  transition:transform 0.8s cubic-bezier(.35,0,.15,1);
-  z-index: 4; /* Le rabat est par-dessus la pochette */
-}
+.env-flap { position:absolute;top:0;left:0;right:0;height:52%; background:linear-gradient(170deg,#F8EDD8,#DECA90); clip-path:polygon(0 0,100% 0,50% 100%); transform-origin:top center;transform:rotateX(0deg); transition: transform 0.8s cubic-bezier(.35,0,.15,1), opacity 0.5s ease; z-index: 4; }
 .env-flap.open { transform:rotateX(180deg); }
 
-/* Le sceau de cire */
-.env-seal {
-  position:absolute;top:40%;left:50%;
-  transform:translate(-50%,-50%);
-  width:44px;height:44px;
-  background:radial-gradient(circle at 38% 38%,#C8A055,#7A5C28);
-  border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--script);font-weight:700;font-size:.9rem;color:#FFFCF0;
-  box-shadow:0 3px 14px rgba(122,92,40,.45);
-  z-index: 5;
-  transition:transform .4s ease,opacity .4s ease;
-}
+.env-seal { position:absolute;top:40%;left:50%; transform:translate(-50%,-50%); width:44px;height:44px; background:radial-gradient(circle at 38% 38%,#C8A055,#7A5C28); border-radius:50%; display:flex;align-items:center;justify-content:center; font-family:var(--script);font-weight:700;font-size:.9rem;color:#FFFCF0; box-shadow:0 3px 14px rgba(122,92,40,.45); z-index: 5; transition:transform .4s ease,opacity .4s ease; }
 .env-seal.hide { transform:translate(-50%,-50%) scale(0);opacity:0; }
 
-/* Quand la carte zoome, on estompe le reste de l'enveloppe pour ne garder que la carte */
-.env-stage.fade-rest .env-back,
-.env-stage.fade-rest .env-front { opacity: 0; }
-.env-inner.fade-out { opacity: 0; }
+.env-stage.fade-rest .env-back, .env-stage.fade-rest .env-front, .env-stage.fade-rest .env-flap { opacity: 0; }
 
-.open-btn {
-  margin-top: 2rem;
-  border: 1px solid var(--gold); background: transparent;
-  padding: 1rem 2.6rem;
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: .65rem; font-weight: 400; letter-spacing: .38em; text-indent: .38em; text-transform: uppercase;
-  color: var(--gold-dk); cursor: pointer;
-  position: relative; overflow: hidden; transition: color .4s;
-  animation: up 1s ease .8s both;
-}
-.open-btn::before {
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(120deg,var(--gold-dk),var(--gold));
-  transform:translateX(-101%);transition:transform .45s ease;z-index:0;
-}
+.open-btn { margin-top: 2rem; border: 1px solid var(--gold); background: transparent; padding: 1rem 2.6rem; font-family: 'Josefin Sans', sans-serif; font-size: .65rem; font-weight: 400; letter-spacing: .38em; text-indent: .38em; text-transform: uppercase; color: var(--gold-dk); cursor: pointer; position: relative; overflow: hidden; transition: color .4s; animation: up 1s ease .8s both; }
+.open-btn::before { content:'';position:absolute;inset:0; background:linear-gradient(120deg,var(--gold-dk),var(--gold)); transform:translateX(-101%);transition:transform .45s ease;z-index:0; }
 .open-btn:hover::before { transform:translateX(0); }
 .open-btn .btn-inner { position:relative;z-index:1;transition:color .4s; }
 .open-btn:hover .btn-inner { color:#FFFDF6; }
 .open-btn:disabled { opacity:.4; pointer-events:none; }
 
-.env-date-hint {
-  margin-top: 1rem;
-  font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400;
-  font-size: clamp(1rem, 3.5vw, 1.1rem);
-  color: var(--text-md); opacity: .8;
-  animation: fade 1s ease 1s both;
-}
+.env-date-hint { margin-top: 1rem; font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: clamp(1rem, 3.5vw, 1.1rem); color: var(--text-md); opacity: .8; animation: fade 1s ease 1s both; }
 
 /* ═══════════════════════════
    MAIN
 ═══════════════════════════ */
-#main { opacity:0; display:none; transition:opacity 1.2s ease; }
-#main.show { opacity:1; }
+#main { display: none; opacity:0; pointer-events:none; transition:opacity 1s ease; }
+#main.show { opacity:1; pointer-events:auto; }
 
-/* ── HERO ── */
 .hero { background:linear-gradient(180deg,#FBF7EC 0%,#F5EACF 55%,#EDD9B2 100%); min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:5rem 1.5rem; text-align:center; position:relative; overflow:hidden; }
-.hero-bism  { font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.8rem,8vw,2.5rem);color:var(--gold-dk);margin-bottom:.8rem;opacity:0;animation:up 1s ease .2s both; }
-.hero-fam   { font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:clamp(.6rem,2.2vw,.7rem);letter-spacing:.2em; text-indent:.2em; text-transform:uppercase;color:var(--text-md);line-height:2.2;opacity:0;animation:up 1s ease .45s both; }
-.hero-rule  { width:55px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:1.2rem auto;opacity:0;animation:fade 1s ease .7s both; }
-
-.hero-names {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family:var(--script);
-  font-weight:700;
-  font-size:clamp(4.5rem,22vw,7.5rem);
-  line-height: 1.1; 
-  color:var(--gold-dk);
-  opacity:0;animation:up 1.2s ease .9s both;
-}
-
-.hero-amp { 
-  display:block;
-  font-family:var(--script);
-  font-weight:600;
-  font-size:clamp(1.4rem,5.5vw,2rem);
-  color:var(--rose);
-  letter-spacing:.05em; text-indent:.05em; 
-  margin: 1.4rem 0 0.1rem 0; 
-}
-
-.hero-badge { margin-top:2.2rem;background:rgba(255,255,255,.7);border:1px solid rgba(184,145,74,.3);padding:1rem 2.4rem;display:inline-block;position:relative;backdrop-filter:blur(4px);opacity:0;animation:up 1s ease 1.4s both; }
+.hero-bism  { font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.8rem,8vw,2.5rem);color:var(--gold-dk);margin-bottom:.8rem;opacity:0;animation:up 1s ease .2s both;animation-play-state:paused; }
+.hero-fam   { font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:clamp(.6rem,2.2vw,.7rem);letter-spacing:.2em; text-indent:.2em; text-transform:uppercase;color:var(--text-md);line-height:2.2;opacity:0;animation:up 1s ease .45s both;animation-play-state:paused; }
+.hero-rule  { width:55px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:1.2rem auto;opacity:0;animation:fade 1s ease .7s both;animation-play-state:paused; }
+.hero-names { display: flex; flex-direction: column; align-items: center; font-family:var(--script); font-weight:700; font-size:clamp(4.5rem,22vw,7.5rem); line-height: 1.1; color:var(--gold-dk); opacity:0;animation:up 1.2s ease .9s both;animation-play-state:paused; }
+.hero-amp { display:block; font-family:var(--script); font-weight:600; font-size:clamp(1.4rem,5.5vw,2rem); color:var(--rose); letter-spacing:.05em; text-indent:.05em; margin: 1.4rem 0 0.1rem 0; }
+.hero-badge { margin-top:2.2rem;background:rgba(255,255,255,.7);border:1px solid rgba(184,145,74,.3);padding:1rem 2.4rem;display:inline-block;position:relative;backdrop-filter:blur(4px);opacity:0;animation:up 1s ease 1.4s both;animation-play-state:paused; }
 .hero-badge::before { content:'';position:absolute;top:5px;left:5px;right:5px;bottom:5px;border:1px solid rgba(184,145,74,.18); }
 .hero-badge-top  { font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:.55rem;letter-spacing:.4em;text-indent:.4em;text-transform:uppercase;color:var(--gold-dk);margin-bottom:.4rem;display:block; }
 .hero-badge-date { font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:clamp(1.2rem,4.2vw,1.4rem);color:var(--text); }
-
-.scroll-hint { position:relative; margin-top: 2.5rem; display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;animation:fade 1.5s ease 2.2s both; }
+.scroll-hint { position:relative; margin-top: 2.5rem; display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;animation:fade 1.5s ease 2.2s both;animation-play-state:paused; }
 .scroll-hint span { font-family:'Josefin Sans',sans-serif;font-weight:400;font-size:.65rem;letter-spacing:.4em;text-indent:.4em;text-transform:uppercase;color:var(--gold-dk);opacity:1; } 
-.scroll-arr { width:18px;height:18px;border-right:1.5px solid var(--gold-dk);border-bottom:1.5px solid var(--gold-dk);transform:rotate(45deg);opacity:1;animation:bob 2s ease-in-out infinite; } 
+.scroll-arr { width:18px;height:18px;border-right:1.5px solid var(--gold-dk);border-bottom:1.5px solid var(--gold-dk);transform:rotate(45deg);opacity:1;animation:bob 2s ease-in-out infinite;animation-play-state:paused; } 
+
+#main.show .hero-bism, #main.show .hero-fam, #main.show .hero-rule, #main.show .hero-names, #main.show .hero-badge, #main.show .scroll-hint, #main.show .scroll-arr { animation-play-state: running; }
 
 /* ── LETTER ── */
 .letter-sec { background:linear-gradient(180deg,#EDD9B2 0%,#F5EACF 30%,#FBF7EC 100%);padding:4.5rem 1.2rem 3.5rem; }
@@ -312,41 +139,15 @@ body {
 .orn{text-align:center;color:var(--gold);font-size:1rem;letter-spacing:.5rem;text-indent:.5rem;margin-bottom:.3rem;}
 .p-tag{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:.6rem;letter-spacing:.4em;text-indent:.4em;text-transform:uppercase;color:var(--gold-dk);text-align:center;margin-bottom:1.1rem;}
 .p-bism{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.6rem,6.5vw,2.2rem);color:var(--gold-dk);text-align:center;margin-bottom:.8rem;}
-
-.p-names{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family:var(--script);font-weight:700;
-  font-size:clamp(2.8rem,13vw,4.8rem);
-  color:var(--gold-dk);text-align:center;
-  line-height: 1.1; margin:.4rem 0 1rem;
-}
-
-.p-amp {
-  font-family: 'Cormorant Garamond', serif; 
-  font-style: italic;
-  font-size: 0.6em;
-  margin: 0.7rem 0 0.1rem 0; 
-  line-height: 1;
-}
-
+.p-names{ display: flex; flex-direction: column; align-items: center; font-family:var(--script);font-weight:700; font-size:clamp(2.8rem,13vw,4.8rem); color:var(--gold-dk);text-align:center; line-height: 1.1; margin:.4rem 0 1rem; }
+.p-amp { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.6em; margin: 0.7rem 0 0.1rem 0; line-height: 1; }
 .rule{display:flex;align-items:center;gap:.7rem;margin:1rem 0;}
 .rule::before,.rule::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(184,145,74,.4));}
 .rule::after{background:linear-gradient(90deg,rgba(184,145,74,.4),transparent);}
 .rule span{color:var(--gold);font-size:.85rem;}
 .p-body{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.15rem,4vw,1.35rem);line-height:2;color:var(--text);text-align:center;}
 .p-body em{font-style:italic;color:var(--gold-dk);font-weight:500;}
-
-.p-sig{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family:var(--script);font-weight:700;
-  font-size:clamp(2.2rem,10vw,3.2rem);
-  line-height: 1.1;
-  color:var(--gold-dk);text-align:center;margin-top:1.5rem;
-}
+.p-sig{ display: flex; flex-direction: column; align-items: center; font-family:var(--script);font-weight:700; font-size:clamp(2.2rem,10vw,3.2rem); line-height: 1.1; color:var(--gold-dk);text-align:center;margin-top:1.5rem; }
 
 /* ── DATE ── */
 .date-sec{background:var(--beige);padding:4.5rem 1.5rem;text-align:center;position:relative;overflow:hidden;}
@@ -403,28 +204,39 @@ body {
 .succ-sig{font-family:var(--script);font-weight:700;font-size:clamp(2rem,9vw,3rem);color:var(--gold-dk);display:block;margin-top:.8rem;}
 #form-error{display:none;text-align:center;margin-top:.8rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--rose);}
 
-/* ── FOOTER ── */
+/* ── FOOTER CORAN & DESIGN ELEGANT ── */
 footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1.5rem 3rem;text-align:center;position:relative;overflow:hidden;}
 .ft-floral{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-end;pointer-events:none;opacity:.3;}
-.ft-names{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family:var(--script);font-weight:700;
-  font-size:clamp(3rem,14vw,5.5rem);
-  line-height: 1.1;
-  color:var(--gold-dk);margin-bottom:.6rem;
+
+.ft-verse-container {
+  margin: 1.5rem auto 2.5rem;
+  padding: 1.5rem 1rem;
+  position: relative;
+  max-width: 90%;
+  border-top: 1px solid rgba(122, 92, 40, 0.2);
+  border-bottom: 1px solid rgba(122, 92, 40, 0.2);
 }
+.ft-verse-container::before {
+  content: '✦';
+  position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+  color: var(--gold-dk); font-size: 1.2rem; background: #DEC88A; padding: 0 10px;
+}
+.ft-verse-container::after {
+  content: '✦';
+  position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+  color: var(--gold-dk); font-size: 1.2rem; background: #DEC88A; padding: 0 10px;
+}
+
 .ft-verse-ar{
-  font-family:'Cormorant Garamond',serif;
+  font-family: 'Amiri', serif;
   direction: rtl;
-  font-size:clamp(1.3rem,5vw,1.9rem);
-  font-weight:500;
-  color:var(--gold-dk);
-  line-height:2.1;
-  max-width:340px;
-  margin:0 auto .6rem;
+  font-size: clamp(1.4rem, 6vw, 2.2rem);
+  color: var(--gold-dk);
+  line-height: 2.2;
+  margin: 0 auto 1rem;
 }
+
+.ft-names{ display: flex; flex-direction: column; align-items: center; font-family:var(--script);font-weight:700; font-size:clamp(3rem,14vw,5.5rem); line-height: 1.1; color:var(--gold-dk); margin-bottom:1rem; }
 .ft-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:clamp(1.05rem,3.5vw,1.2rem);color:var(--text-md);max-width:320px;margin:0 auto;line-height:2;opacity:1;}
 .ft-hearts{margin:1.2rem 0;color:var(--rose);font-size:1rem;letter-spacing:.4rem;text-indent:.4rem;}
 .ft-meta{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:.65rem;letter-spacing:.25em;text-indent:.25em;text-transform:uppercase;color:var(--gold-dk);opacity:1;margin-top:1.8rem;}
@@ -439,6 +251,11 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
 </style>
 </head>
 <body>
+
+<!-- AJOUT DU LECTEUR AUDIO INVISIBLE -->
+<audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
 <!-- ═══ ENVELOPE ENTRY ═══ -->
 <div id="env-scene">
@@ -464,31 +281,29 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
   </div>
 
   <div class="env-inner" id="env-inner">
-    <p class="env-bism">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-    <p class="env-fam">
-      Les Familles Hachim et Simsek<br>
-      ont le plaisir de vous faire part du mariage de leurs enfants
-    </p>
-    <div class="env-rule"></div>
-    
-    <div class="env-names">
-      <span>Meryem</span>
-      <span class="env-amp">✦ &amp; ✦</span>
-      <span>Murat</span>
+    <div class="fade-target">
+      <p class="env-bism">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+      <p class="env-fam">
+        Les Familles Hachim et Simsek<br>
+        ont le plaisir de vous faire part du mariage de leurs enfants
+      </p>
+      <div class="env-rule"></div>
+      
+      <div class="env-names">
+        <span>Meryem</span>
+        <span class="env-amp">✦ &amp; ✦</span>
+        <span>Murat</span>
+      </div>
     </div>
 
-    <!-- STRUCTURE ENVELOPPE RÉVISÉE -->
     <div class="env-stage" id="env-stage">
-      <!-- Le dos -->
       <div class="env-back"></div>
       
-      <!-- La carte (au milieu) -->
       <div class="env-card" id="env-card">
         <span class="env-cname">Meryem &amp; Murat</span>
-        <span class="env-csub">31 Octobre 2026 · 18h00</span>
+        <span class="env-csub">31 Octobre 2026 · 17h00</span>
       </div>
       
-      <!-- La pochette avant découpée (qui couvre le bas de la carte) -->
       <div class="env-front">
         <div class="env-v"></div>
         <div class="env-wl"></div>
@@ -499,10 +314,10 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
       <div class="env-seal" id="env-seal">M&amp;M</div>
     </div>
 
-    <button class="open-btn" id="open-btn">
+    <button class="open-btn fade-target" id="open-btn">
       <span class="btn-inner">Ouvrir l'invitation &nbsp;✦</span>
     </button>
-    <p class="env-date-hint">Samedi 31 Octobre 2026 &nbsp;·&nbsp; 18h00</p>
+    <p class="env-date-hint fade-target">Samedi 31 Octobre 2026 &nbsp;·&nbsp; 17h00</p>
   </div>
 </div>
 
@@ -536,7 +351,7 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
 
     <div class="hero-badge">
       <span class="hero-badge-top">Le grand jour</span>
-      <span class="hero-badge-date">Samedi 31 Octobre 2026 &nbsp;·&nbsp; 18h00</span>
+      <span class="hero-badge-date">Samedi 31 Octobre 2026 &nbsp;·&nbsp; 17h00</span>
     </div>
     <div class="scroll-hint">
       <span>Découvrir</span>
@@ -552,7 +367,7 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
       <p class="p-tag">Invitation de Mariage</p>
       <p class="p-bism">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
       
-   
+      
       
       <div class="rule"><span>❧</span></div>
       <p class="p-body">
@@ -571,8 +386,6 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
         Votre présence sera le plus précieux des cadeaux.<br>Venez partager avec nous ce moment de bonheur,<br>de douceur et de bénédiction.
       </p>
       <div class="rule"><span>♡</span></div>
-      
-    
 
     </div>
   </section>
@@ -582,7 +395,7 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
     <div class="rev d1">
       <div class="big-d">31<span class="big-mo">Octobre</span><span class="big-yr">2 · 0 · 2 · 6</span></div>
     </div>
-    <div class="rule rev d2" style="max-width:160px;margin:1.5rem auto;"><span style="color:var(--rose);">♡</span></div>
+    <div class="rule rev d2" style="max-width:160px;margin:1.5rem auto;"><span style="color:var(--rose);">❤</span></div>
     <p class="rev d2" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:clamp(1.05rem,3.5vw,1.2rem);color:var(--text-md);margin-bottom:1.5rem;">Plus que quelques jours avant notre bonheur…</p>
     <div class="cd-grid rev d3">
       <div class="cd-box"><div class="cd-n" id="cd">—</div><div class="cd-l">Jours</div></div>
@@ -590,7 +403,7 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
       <div class="cd-box"><div class="cd-n" id="cm">—</div><div class="cd-l">Minutes</div></div>
       <div class="cd-box"><div class="cd-n" id="cs">—</div><div class="cd-l">Secondes</div></div>
     </div>
-    <p class="time-note rev d4">La cérémonie commence à <strong style="color:var(--gold-dk);font-style:normal;">18h00</strong></p>
+    <p class="time-note rev d4">La cérémonie commence à <strong style="color:var(--gold-dk);font-style:normal;">17h00</strong></p>
   </section>
 
   <section class="venue-sec">
@@ -658,11 +471,14 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
     </div>
     <div style="position:relative;z-index:1;">
       
-      <p class="ft-verse-ar">« .وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً »</p>
+      <div class="ft-verse-container rev">
+        <p class="ft-verse-ar">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+        <p class="ft-quote">« Parmi Ses signes, Il a créé pour vous, de vous-mêmes, des épouses afin que vous trouviez la quiétude auprès d'elles. »<br><em style="font-size:.9em;opacity:.7;">— Sourate Ar-Rûm, 21</em></p>
+      </div>
 
-      <p class="ft-quote">« Parmi Ses signes, Il a créé pour vous, de vous-mêmes, des épouses afin que vous trouviez la quiétude auprès d'elles. »<br><em style="font-size:.9em;opacity:.7;">— Sourate Ar-Rûm, 21</em></p>
-      <div class="ft-hearts">♡ &nbsp; ♡ &nbsp; ♡</div>
-      <p class="ft-meta">31 Octobre 2026 &nbsp;·&nbsp; Bobigny, France</p>
+
+      <div class="ft-hearts rev">♥ &nbsp; ♥ &nbsp; ♥</div>
+      <p class="ft-meta rev">31 Octobre 2026 &nbsp;·&nbsp; Bobigny, France</p>
     </div>
   </footer>
 
@@ -687,47 +503,55 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
   }
 })();
 
-/* open envelope — la carte sort, puis zoome pour révéler le site */
+/* GESTION DE LA MUSIQUE ET DE L'ANIMATION */
 document.getElementById('open-btn').addEventListener('click',function(){
-  var env=document.getElementById('env-scene');
-  var main=document.getElementById('main');
-  var btn=document.getElementById('open-btn');
-  var card=document.getElementById('env-card');
-  var stage=document.getElementById('env-stage');
-  var inner=document.getElementById('env-inner');
+  var env = document.getElementById('env-scene');
+  var main = document.getElementById('main');
+  var btn = document.getElementById('open-btn');
+  var card = document.getElementById('env-card');
+  var stage = document.getElementById('env-stage');
+  var fadeTargets = document.querySelectorAll('.fade-target');
+  
+  // Audio
+  var bgMusic = document.getElementById('bg-music');
   btn.disabled=true;
 
-  /* 1) le rabat s'ouvre, le sceau disparaît */
+  /* Lancement de la musique lors du clic */
+  bgMusic.play().catch(function(error) {
+    console.log("La lecture automatique a été bloquée par le navigateur.");
+  });
+
+  /* 1) Le rabat s'ouvre, le sceau et les textes s'effacent */
   document.getElementById('env-flap').classList.add('open');
   document.getElementById('env-seal').classList.add('hide');
+  
+  fadeTargets.forEach(function(el) {
+    el.classList.add('fade-out');
+  });
 
-  /* 2) la carte sort de l'enveloppe */
+  /* 2) La carte sort de l'enveloppe */
   setTimeout(function(){
     card.classList.add('rise');
-    inner.classList.add('fade-out'); /* les textes/bouton au-dessus s'estompent doucement */
   }, 600);
 
-  /* 3) une fois bien sortie, la carte "zoome" vers nous */
+  /* 3) L'enveloppe disparaît et la carte zoome massivement vers l'écran */
   setTimeout(function(){
-    stage.classList.add('fade-rest'); /* le reste de l'enveloppe s'efface */
+    stage.classList.add('fade-rest');
     card.classList.add('zoom');
+    main.style.display = 'block';
+  }, 1800);
 
-    /* on prépare le site principal en dessous, prêt à apparaître en fondu */
-    main.style.display='block';
-    requestAnimationFrame(function(){
-      requestAnimationFrame(function(){
-        setTimeout(function(){
-          main.classList.add('show');
-        }, 250); /* le fondu du site démarre pendant que la carte grandit/s'efface */
-      });
-    });
-  }, 1850);
+  /* 4) Le site apparaît par-dessus */
+  setTimeout(function(){
+    main.classList.add('show');
+    env.classList.add('out'); 
+  }, 2600); 
 
-  /* 4) on masque complètement la scène de l'enveloppe une fois la transition terminée */
+  /* 5) Nettoyage */
   setTimeout(function(){
     env.style.display='none';
     window.scrollTo(0,0);
-  }, 3250);
+  }, 3600);
 });
 
 /* countdown */
