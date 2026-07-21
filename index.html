@@ -31,7 +31,7 @@ body {
   font-family: 'Cormorant Garamond', serif;
   background: #FBF7EC;
   color: var(--text);
-  overflow-x: hidden;
+  overflow-x: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -42,7 +42,7 @@ body {
 #env-scene {
   position: fixed; inset: 0; z-index: 8000;
   background: linear-gradient(165deg, #FBF7EC 0%, #F0E3C0 60%, #E4D098 100%);
-  overflow-y: hidden;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   display: flex; flex-direction: column;
   align-items: center;
@@ -80,8 +80,6 @@ body {
 
 .env-card { position:absolute;bottom:8%;left:7%;right:7%;height:66%; background:linear-gradient(180deg,#FFFEF8,#FAF5E8); border-radius:2px; box-shadow: 0 -4px 15px rgba(0,0,0,.05); transform:translateY(4px) rotateX(10deg); opacity:0; transition:transform 1.2s cubic-bezier(.15,.85,.25,1),opacity .6s ease; display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem; border-top:2px solid rgba(184,145,74,.3); z-index: 2; transform-origin: center center; will-change: transform; }
 .env-card.rise { transform: translateY(-120%) rotateX(0deg); opacity: 1; z-index: 10; }
-
-/* MODIFICATION: Retournement 3D (Flip) au lieu de zoom */
 .env-card.flip { 
   transform: translateY(-120%) translateZ(250px) rotateY(180deg) scale(1.6); 
   opacity: 0; 
@@ -243,6 +241,7 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
   margin: 0 auto 1rem;
 }
 
+.ft-names{ display: flex; flex-direction: column; align-items: center; font-family:var(--script);font-weight:700; font-size:clamp(3rem,14vw,5.5rem); line-height: 1.1; color:var(--gold-dk); margin-bottom:1rem; }
 .ft-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:clamp(1.05rem,3.5vw,1.2rem);color:var(--text-md);max-width:320px;margin:0 auto;line-height:2;opacity:1;}
 .ft-hearts{margin:1.2rem 0;color:var(--rose);font-size:1rem;letter-spacing:.4rem;text-indent:.4rem;}
 .ft-meta{font-family:'Josefin Sans',sans-serif;font-weight:300;font-size:.65rem;letter-spacing:.25em;text-indent:.25em;text-transform:uppercase;color:var(--gold-dk);opacity:1;margin-top:1.8rem;}
@@ -258,7 +257,6 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
 </head>
 <body>
 
-<!-- AJOUT DU LECTEUR AUDIO INVISIBLE -->
 <audio id="bg-music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
@@ -373,7 +371,8 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
       <p class="p-tag">Invitation de Mariage</p>
       <p class="p-bism">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
       
-    
+   
+      
       <div class="rule"><span>❧</span></div>
       <p class="p-body">
         C'est avec une joie immense et des cœurs remplis d'amour<br>et de gratitude envers Allah que les familles
@@ -424,6 +423,9 @@ footer{background:linear-gradient(180deg,#EDD9B2 0%,#DEC88A 100%);padding:4rem 1
       </div>
       <div class="venue-foot">
         <a href="https://maps.google.com/?q=45+Rue+Saint-Andre+Bobigny+93000+France" target="_blank" class="itin-btn"> &nbsp;Obtenir l'itinéraire</a>
+        <p style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(.9rem, 3.5vw, 1.05rem); color:var(--text-md); opacity:0.9; margin: 0; text-align: center;">
+          Note : Le parking de la salle est collé au magasin Isla Food.
+        </p>
       </div>
     </div>
   </section>
